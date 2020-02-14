@@ -1,6 +1,10 @@
 # weather_app_basic
 Basic weather app made with React Native
 
+## expo app 설치 후에 QR code를 스캔해주세요.
+
+
+```javascript
 expo
 create-react-app 과 같다.
 리엑트 네이티브를 위한 설정 파일 같은 것들이 없는 방식으로, 모든 것이 셋업되어 있다.
@@ -72,3 +76,119 @@ view안에 모든 것이 들러가야 한다.
 
 
 이런 룰이 존재하는 이유는 브릿지 때문이다.
+
+
+## Logic
+리엑트 네이티브 레이아웃 규칙
+
+리엑트 네이티브의 모든 flex box의 디폴트는 
+flexDirection: column이다.
+웹사이트에 모든 flex box의 디폴트는 row이고 flexDirection이 column이다.
+왜냐하면 모바일 폰에서는 대게 모든게 서로 아래에 있으니까
+그래서 flexDirection 기본값이 column이다. 바꿀 수는 있다.
+
+웹사이트에서는 flex: 1 or flex: 2 이렇게 안한다.
+
+<View>는 리엑트 네이티브에서 <div>와 같은 것이다.
+
+style을 주는 방법
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <View style={styles.yellowView} />
+      <View style={{flex: 3, backgroundColor: "blue"}} />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  yellowView: {
+    flex: 1,
+    backgroundColor: "yellow"
+  }
+});
+
+
+flex: 1 은 모든 공간 사용 가능하다라는 의미, 전체공간을 다 사용하고 싶을 떄 사용
+
+container안에 두개의 View가 각각 flex를 1, 3으로 지정되 있는데 이경우엔
+각각 4분의 1, 4분의 3의 공간을 차지한다.
+
+웹사이트에는 없는 css인데, 리엑트 네이티브에 쓴다.
+paddingHorizontal: paddingLeft
+paddingVertical: paddingBottom
+
+
+GeoLocation은 사용자 IP 기반 위치 정보를 제공하는 서비스
+
+openweathermap API
+
+expo-location, axios, expo-linear-gradient 추가
+
+### flex 
+
+- justifyContent
+
+justify-content 속성은 플렉스 요소의 수평 방향 정렬 방식을 설정합니다.
+이 속성은 다음과 같은 속성값을 가질 수 있습니다.
+
+1. flex-start : 기본 설정으로, 플렉스 요소는 플렉스 컨테이너의 앞쪽에서부터 배치됩니다.
+
+2. flex-end : 플렉스 요소는 플렉스 컨테이너의 뒤쪽에서부터 배치됩니다.
+
+3. center : 플렉스 요소는 플렉스 컨테이너의 가운데에서부터 배치됩니다.
+
+4. space-between : 플렉스 요소는 요소들 사이에만 여유 공간을 두고 배치됩니다.
+
+5. space-around : 플렉스 요소는 앞, 뒤, 그리고 요소들 사이에도 모두 여유 공간을 두고 배치됩니다.
+
+- alignItems
+
+align-items 속성은 플렉스 요소의 수직 방향 정렬 방식을 설정합니다.
+이 속성은 한 줄만을 가지는 플렉스 박스에서는 효과가 없으며, 두 줄 이상을 가지는 플렉스 박스에서만 효과가 있습니다.
+이 속성은 다음과 같은 속성값을 가질 수 있습니다.
+
+1. stretch : 기본 설정으로, 플렉스 요소의 높이가 플렉스 컨테이너의 높이와 같게 변경된 뒤 연이어 배치됩니다.
+
+2. flex-start : 플렉스 요소는 플렉스 컨테이너의 위쪽에 배치됩니다.
+
+3. flex-end : 플렉스 요소는 플렉스 컨테이너의 아래쪽에 배치됩니다.
+
+4. center : 플렉스 요소는 플렉스 컨테이너의 가운데에 배치됩니다.
+
+5. baseline : 플렉스 요소는 플렉스 컨테이너의 기준선(baseline)에 배치됩니다.
+
+
+- tatusBar 추가( 리엑트 네이티브 )
+
+  앱 상태 표시 줄을 제어하는 ​​구성 요소
+  
+  barStyle: 상태 표시 줄 텍스트의 색상을 설정합니다.
+
+uigradients에서 색상검색
+
+
+
+
+## PropTypes의 종류
+
+array	배열
+bool :	true/false
+func :	함수
+number :	숫자
+object :	객체
+string :	문자열
+symbol :	심벌 개체(ES6)
+node :	렌더링 가능한 모든것(number, string, element, 또는 그것들이 포함된 array/fragment)
+element :	React element
+instanceOf(ClassName) :	JS에서 instanceof로 정의 가능한 클래스 인스턴스
+oneOf([…Value]) :	포함된 값들중 하나.(ex: oneOf([‘남자’,’여자’]))
+oneOfType([…PropTypes]) :	포함된 PropTypes들중 하나. (ex: oneOfType([PropTypes.string, PropTypes.instanceOf(MyClass)]))
+arrayOf(PropTypes) :	해당 PropTypes으로 구성된 배열
+objectOf(PropTypes) :	주어진 종류의 값을 가진 객체
+shape({key:PropTypes}) :	해당 스키마를 가진 객체.(ex:shape({name:PropTypes.string,age:PropTypes.number}))
+exact({key:PropTypes}) :	명확하게 해당 스키마만 존재해야함.
+
