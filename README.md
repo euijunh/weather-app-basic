@@ -3,6 +3,10 @@ Basic weather app made with React Native
 
 ## expo app 설치 후에 QR code를 스캔해주세요.
 
+- [play store](https://play.google.com/store/apps/details?id=host.exp.exponent)
+
+- [app store](https://apps.apple.com/kr/app/expo-client/id982107779)
+
 ![qrcode](./app-qrcode.png)
 
 
