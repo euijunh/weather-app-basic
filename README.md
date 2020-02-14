@@ -3,6 +3,8 @@ Basic weather app made with React Native
 
 ## expo app 설치 후에 QR code를 스캔해주세요.
 
+![qrcode](./app-qrcode.png)
+
 
 ```javascript
 expo
